@@ -1,36 +1,31 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   return (
-
-    
-    <header className='header' >
-        <nav className="flex text-lg ml-210 font-medium bg-transparent p-3  space-x-30">
-        <NavLink to="/" className={({isActive}) => isActive ? 'text-black' : 'text-white'}>
-        <p className=' hover:text-violet-700 h-9 w-15 rounded-xl p-1 bg-red-900 border-rose-900 border-1  '>Home</p>
-        </NavLink>
-        
-            <NavLink to="/about" className={({isActive}) => isActive ? 'text-black' : 'text-white'}>
-            <p className=' hover:text-violet-700 h-9 w-15 rounded-xl p-1 bg-red-900 border-rose-900 border-1     '>About</p> 
-            </NavLink>
-
-            <NavLink to="/projects" className={({isActive}) => isActive ? 'text-black': 'text-white'}>
-            <p className=' hover:text-violet-700 h-9 w-17 rounded-xl p-1 bg-red-900 border-rose-900 border-1  '>Project</p> 
-            </NavLink>
-
-           
-            <NavLink to="/contact" className={({isActive}) => isActive ? 'text-black': 'text-white'}>
-            <p className=' hover:text-violet-700 h-9 w-19 rounded-xl p-1 bg-red-900 border-rose-900 border-1  '>Contact</p>
-            </NavLink>
-
-        </nav>
-
-        
+    <header className="w-full bg-transparent">
+      <nav className="lg:px-8 flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-1 text-sm ">
+        {[
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' },
+          { name: 'Projects', path: '/projects' },
+          { name: 'Contact', path: '/contact' },
+        ].map(({ name, path }) => (
+          <NavLink
+            key={name}
+            to={path}
+            className={({ isActive }) =>
+              `px-4 py-2 rounded-xl border border-rose-900 bg-red-900 transition hover:text-violet-300 ${
+                isActive ? 'text-black' : 'text-white'
+              }`
+            }
+          >
+            {name}
+          </NavLink>
+        ))}
+      </nav>
     </header>
-    
-  )
+  );
 }
 
-export default Navbar   
-
+export default Navbar;

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import {useRef } from "react";
-import { arrow } from '../assets/icons'
-import { soundoff, soundon } from '../assets/icons'
-import angry_birds from '../assets/icons/angry_birds.mp3'
+import React, { useEffect, useState, useRef } from "react";
+import { arrow, soundon, soundoff } from "../assets/icons";
+import angry_birds from "../assets/icons/angry_birds.mp3";
 
 const Home = () => {
   const audioRef = useRef(new Audio(angry_birds));
@@ -11,52 +9,62 @@ const Home = () => {
 
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     if (isPlayingMusic) {
-      audioRef.current.play(angry_birds).catch(err => console.error("Error playing audio:", err));
+      audioRef.current.play().catch((err) =>
+        console.error("Error playing audio:", err)
+      );
     } else {
       audioRef.current.pause();
-      audioRef.current.currentTime = 0; // Reset audio
+      audioRef.current.currentTime = 0;
     }
   }, [isPlayingMusic]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true); // Trigger the visibility after delay
-    }, 300); // Delay to make the animation smooth
+    const timer = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timer);
   }, []);
+
   return (
-    <div className="sm:text-xl mt-10 w-120 h-35 sm:leading-snug rounded-3xl ml-130 mr-125 mt-1 bg-red-900 text-center py-4 px-6 text-white mx-5">
-       <p className={`transition-transform duration-1000 transform `}>
-        Hi, I am <span className="font-bold text-3xl"> Kajal </span> 🖐️ <br />
+    <div className="relative flex flex-col items-center justify-center text-center px-4 sm:px-2 md:px-10 py-0 sm:py-10 rounded-3xl max-w-4xl mx-auto mt-10 text-white">
+      <p
+        className={`transition-opacity duration-1000 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        } text-lg sm:text-xl md:text-2xl leading-relaxed`}
+      >
+        Hi, I am{" "}
+        <span className="font-bold text-2xl sm:text-3xl md:text-4xl text-yellow-300">
+          Kajal
+        </span>{" "}
+        🖐️
+        <br />
         A Software Engineer from JHARKHAND
       </p>
-      
-      <div>
-      <a
-        href="/about"
-        className="justify-center w-full bg-white text-blue-500 h-10 font-semibold px-6 py-2 rounded-2xl 
-                   hover:bg-yellow-600 hover:text-white hover:scale-90 transition-all 
-                   duration-300 ease-in-out transform flex items-center gap-2"
-      >
-        Learn more
-        <img src={arrow} alt="arrow" className="w-4 h-4 object-contain " />
-    
-      </a>
-    </div>
-    <div className="absolute mt-110  ml-4 left-2">
+
+      {/* CTA Button */}
+      <div className="mt-6 sm:mt-8">
+        <a
+          href="/about"
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-white text-blue-600 font-semibold rounded-2xl
+          hover:bg-yellow-600 hover:text-white hover:scale-95 transition-all duration-300 ease-in-out"
+        >
+          Learn more
+          <img src={arrow} alt="arrow" className="w-4 h-4 object-contain" />
+        </a>
+      </div>
+
+      {/* Music Toggle */}
+      <div className="absolute bottom-4 left-4 sm:left-6">
         <img
           src={isPlayingMusic ? soundon : soundoff}
           alt="jukebox"
           onClick={() => setIsPlayingMusic(!isPlayingMusic)}
-          className="w-12 h-12 cursor-pointer object-contain" 
+          className="w-10 sm:w-12 h-10 sm:h-12 cursor-pointer object-contain transition-transform hover:scale-110"
         />
       </div>
     </div>
- 
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

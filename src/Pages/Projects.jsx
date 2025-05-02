@@ -4,48 +4,52 @@ import { projects } from '../constants';
 
 const Projects = () => {
   return (
-    <section className="max-container">
-      <h1 className="head-text text-2xl font-bold">
-        My<span className="blue-gradient_text text-4xl text-red-900 font-largebold drop-shadow"> Projects</span>
+    <section className="max-w-7xl mx-auto px-4 py-10">
+      <h1 className="text-3xl sm:text-4xl font-bold text-blue-900">
+        My{" "}
+        <span className="blue-gradient_text text-4xl sm:text-5xl text-red-900 drop-shadow">
+          Projects
+        </span>
       </h1>
 
-      <div className="mt-5 flex flex-col font-semibold gap-3 text-black">
-        <p>I've embarked on numerous projects throughout the years,
-          but these are the ones I hold closest to my heart.Many of
-          them are open-source,so if
-          you come across something that piques your interest,feel to
-          explore the codebase and contribute your ideas
-          for further enhancements.
-          Your collaboration is highly valued!
+      <div className="mt-6 text-base sm:text-lg font-medium text-slate-700">
+        <p>
+          I've embarked on numerous projects throughout the years, but these are the ones I hold closest to my heart.
+          Many of them are open-source, so if you come across something that piques your interest,
+          feel free to explore the codebase and contribute your ideas for further enhancements. Your collaboration is highly valued!
         </p>
       </div>
 
-      <div className="flex flex-wrap my-20 ml-10 gap-160">
+      {/* Project Grid */}
+      <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
         {projects.map((project) => (
-          <div className="lg:w-[400px] w-full" key={project.name} >
-            <div className="block-container w-12 h-12">
-              <div className={'btn-back rounded-xl ${project.theme}'} />
-              <div className="btn-font rounded-xl flex justify-center items-center" >
+          <div key={project.name} className="w-full">
+            {/* Project Icon */}
+            <div className="w-16 h-16 mb-4 relative">
+              <div className={`absolute inset-0 rounded-xl ${project.theme}`} />
+              <div className="relative rounded-xl flex justify-center items-center bg-white shadow-md">
                 <img
                   src={project.iconUrl}
-                  alt="Project Icon"
-                  className="w-1/2 h-1/2 object-contain" />
+                  alt={`${project.name} Icon`}
+                  className="w-8 h-8 object-contain"
+                />
               </div>
             </div>
 
-            <div className="mt-5 flex flex-col">
-              <h4 className="text-2xl font-poppins font-semibold">
+            {/* Project Content */}
+            <div className="mt-3">
+              <h4 className="text-xl font-semibold text-gray-800">
                 {project.name}
               </h4>
-              <p className="mt-2 text-slate-500">
+              <p className="mt-2 text-slate-600 text-sm">
                 {project.description}
               </p>
-              <div className="mt-5 flex items-center gap-2 font-poppins">
+              <div className="mt-4 flex items-center gap-2 text-blue-600 hover:underline">
                 <Link
                   to={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-blue-600"
+                  className="font-medium"
                 >
                   Live Link
                 </Link>
@@ -59,9 +63,8 @@ const Projects = () => {
           </div>
         ))}
       </div>
-      
     </section>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;
