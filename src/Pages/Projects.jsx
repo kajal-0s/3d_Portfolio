@@ -4,15 +4,15 @@ import { projects } from '../constants';
 
 const Projects = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-10">
-      <h1 className="text-3xl sm:text-4xl font-bold text-blue-900">
+    <section className="max-w-7xl mx-auto px-4">
+      <h1 className="text-l  font-bold text-blue-900">
         My{" "}
-        <span className="blue-gradient_text text-4xl sm:text-5xl text-red-900 drop-shadow">
+        <span className="blue-gradient_text text-xl sm:text-5xl text-red-900 drop-shadow">
           Projects
         </span>
       </h1>
 
-      <div className="mt-6 text-base sm:text-lg font-medium text-slate-700">
+      <div className="mt-2 text-sm font-medium">
         <p>
           I've embarked on numerous projects throughout the years, but these are the ones I hold closest to my heart.
           Many of them are open-source, so if you come across something that piques your interest,
@@ -25,26 +25,26 @@ const Projects = () => {
         {projects.map((project) => (
           <div key={project.name} className="w-full">
             {/* Project Icon */}
-            <div className="w-16 h-16 mb-4 relative">
+            <div className="w-16 h-3 mb-4 relative">
               <div className={`absolute inset-0 rounded-xl ${project.theme}`} />
               <div className="relative rounded-xl flex justify-center items-center bg-white shadow-md">
                 <img
                   src={project.iconUrl}
                   alt={`${project.name} Icon`}
-                  className="w-8 h-8 object-contain"
+                  className="w-8 h-7 object-contain"
                 />
               </div>
             </div>
 
             {/* Project Content */}
-            <div className="mt-3">
+            <div className="mt-2">
               <h4 className="text-xl font-semibold text-gray-800">
                 {project.name}
               </h4>
-              <p className="mt-2 text-slate-600 text-sm">
+              <p className="mt-1 text-slate-600 text-sm">
                 {project.description}
               </p>
-              <div className="mt-4 flex items-center gap-2 text-blue-600 hover:underline">
+              <div className="mt-1 flex items-center gap-2 text-blue-600 hover:underline">
                 <Link
                   to={project.link}
                   target="_blank"

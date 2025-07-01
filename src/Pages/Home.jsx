@@ -31,7 +31,7 @@ const Home = () => {
       <p
         className={`transition-opacity duration-1000 ${
           isVisible ? "opacity-100" : "opacity-0"
-        } text-lg sm:text-xl md:text-2xl leading-relaxed`}
+        } text-lg sm:text-xl md:text-xl leading-relaxed`}
       >
         Hi, I am{" "}
         <span className="font-bold text-2xl sm:text-3xl md:text-4xl text-yellow-300">
@@ -43,24 +43,24 @@ const Home = () => {
       </p>
 
       {/* CTA Button */}
-      <div className="mt-6 sm:mt-8">
+      <div className="mt-1 sm:mt-8">
         <a
           href="/about"
-          className="flex items-center justify-center gap-2 px-6 py-3 bg-white text-blue-600 font-semibold rounded-2xl
+          className="flex items-center justify-center gap-2 px-6 py-2 bg-white blue text-blue-800 font-semibold rounded-2xl
           hover:bg-yellow-600 hover:text-white hover:scale-95 transition-all duration-300 ease-in-out"
         >
           Learn more
-          <img src={arrow} alt="arrow" className="w-4 h-4 object-contain" />
+          <img src={arrow} alt="arrow" className="w-4 h-3 object-contain" />
         </a>
       </div>
 
       {/* Music Toggle */}
-      <div className="absolute bottom-4 left-4 sm:left-6">
+      <div className="fixed bottom-9 left-4 sm:left-6">
         <img
           src={isPlayingMusic ? soundon : soundoff}
           alt="jukebox"
           onClick={() => setIsPlayingMusic(!isPlayingMusic)}
-          className="w-10 sm:w-12 h-10 sm:h-12 cursor-pointer object-contain transition-transform hover:scale-110"
+          className="w-10 sm:w-12 h-10 sm:h-10 cursor-pointer object-contain transition-transform hover:scale-110"
         />
       </div>
     </div>

@@ -4,12 +4,13 @@ import { NavLink } from 'react-router-dom';
 function Navbar() {
   return (
     <header className="w-full bg-transparent">
-      <nav className="lg:px-8 flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-1 text-sm ">
+      <nav className=" flex flex-wrap justify-center items-center gap-3 text-sm">
         {[
           { name: 'Home', path: '/' },
-          { name: 'About', path: '/about' },
+           { name: 'About', path: '/about' },
           { name: 'Projects', path: '/projects' },
           { name: 'Contact', path: '/contact' },
+         
         ].map(({ name, path }) => (
           <NavLink
             key={name}
